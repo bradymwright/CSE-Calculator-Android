@@ -1,0 +1,51 @@
+MARK: Calculation Algorithm
+ 1.  Calculate BMR (Basal Metabolic Rate)
+        Female BMR = 655 + (4.35 * Weight in LBS) + (1.8 * Height in CM) - (4.7 * Age in YRS)
+        Male BMR = 66 + (6.23 * Weight in LBS) + (5 * Height in CM) - (6.8 * Age in YRS)
+        ^^^You have to calculate the numbers in parentheses first^^^
+ 2.  Calculate TDEE (Total Daily Energy Expenditure)
+        TDEE = BMR * Activity Factor
+            0 Days = 1.2 * BMR
+            1-2 days/week = 1.325 * BMR
+            3-4 days/week = 1.45 * BMR
+            5-6 days/week = 1.575 * BMR
+            7 days/week = 1.7 * BMR
+ 3.  Calculate and Display Daily Calorie Target Based on Goals
+        Weight Loss (10% below) = TDEE - (TDEE * .1)
+        Weight Loss (15% below) = TDEE - (TDEE * .15)
+        Weight Loss (20% below) = TDEE - (TDEE * .2)
+        Weight Loss (25% below) = TDEE - (TDEE * .25)
+        Weight Loss (30%+ below) = TDEE - (TDEE * .3)
+        Maintain Current Weight = TDEE
+        Weight Gain (10% above) = TDEE + (TDEE * .1)
+        Weight Gain (15%+ above) = TDEE + (TDEE * .15)
+ 4.  Display Servings Suggestions Based on Calorie Target
+        if 1250-1499 Calories:
+            3 meals / 1 snack
+            3 meals / 2 power balls
+        if 1500-1749 Calories:
+            3 meals / 2 snacks
+            3 meals / 1 snack / 2 power balls
+        if 1750-1999 Calories:
+            3 meals / 3 snacks
+            3 meals / 2 snacks / 2 power balls
+        if 2000-2249 Calories:
+            3 meals / 4 snacks
+            3 meals / 3 snacks / 2 power balls
+            4 meals / 2 snack / 1 power ball
+        if 2250-2499 Calories:
+            4 meals / 3 snacks / 1 power ball
+            3 meals / 4 snacks / 2 power balls
+            3 meals / 5 snacks
+        if 2500-2749 Calories:
+            4 meals / 4 snacks / 1 power ball
+            5 meals / 3 snacks
+            5 meals / 2 snacks / 2 power balls
+        if 2750-2999 Calories:
+            5 meals / 3 snacks / 1 power ball
+            6 meals / 2 snacks / 2 power balls
+            6 meals / 3 snacks
+        if 3000+ Calories:
+            5 meals / 5 snacks / 1 dessert
+            6 meals / 4 snacks
+            6 meals / 3 snacks / 2 desserts
