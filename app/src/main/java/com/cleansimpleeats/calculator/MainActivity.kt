@@ -2,6 +2,7 @@ package com.cleansimpleeats.calculator
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import androidx.core.widget.toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -21,21 +22,34 @@ class MainActivity : AppCompatActivity(), MainView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         presenter = MainPresenter()
+        setupSubmitButton()
+    }
+
+    private fun setupSubmitButton() {
         submitTextView.setOnClickListener {
-            val submitParams = SubmitParams(
-                gender = when (genderRadioGroup.checkedRadioButtonId) {
-                    R.id.maleRadioButton -> Gender.MALE
-                    R.id.femaleRadioButton -> Gender.FEMALE
-                    else -> throw IllegalStateException("Unsupported gender RadioButton")
-                },
-                age = ageEditText.text.toString().toInt(),
-                weightLbs = weightEditText.text.toString().toInt(),
-                heightItemPosition = heightSpinner.selectedItemPosition,
-                weeklyActivityItemPosition = weeklyActivitySpinner.selectedItemPosition,
-                weightGoalItemPosition = weightGoalSpinner.selectedItemPosition
-            )
-            presenter.onSubmit(submitParams)
+            createSubmitParams()?.let(presenter::onSubmit) ?: run {
+                toast("Please enter the data first")
+            }
         }
+    }
+
+    private fun createSubmitParams(): SubmitParams? {
+        val ageString = ageEditText.text.toString()
+        val weightLbsString = weightEditText.text.toString()
+        if (ageString.isEmpty() || weightLbsString.isEmpty()) return null
+
+        return SubmitParams(
+            gender = when (genderRadioGroup.checkedRadioButtonId) {
+                R.id.maleRadioButton -> Gender.MALE
+                R.id.femaleRadioButton -> Gender.FEMALE
+                else -> throw IllegalStateException("Unsupported gender RadioButton")
+            },
+            age = ageString.toInt(),
+            weightLbs = weightLbsString.toInt(),
+            heightItemPosition = heightSpinner.selectedItemPosition,
+            weeklyActivityItemPosition = weeklyActivitySpinner.selectedItemPosition,
+            weightGoalItemPosition = weightGoalSpinner.selectedItemPosition
+        )
     }
 
     override fun onStart() {
