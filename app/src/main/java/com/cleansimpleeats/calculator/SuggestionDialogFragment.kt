@@ -35,6 +35,11 @@ class SuggestionDialogFragment : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         setupCaloriesText()
         setupSuggestions()
+        setupChangeButton()
+    }
+
+    private fun setupChangeButton() {
+        changeTextView.setOnClickListener { dismiss() }
     }
 
     private fun setupSuggestions() {
