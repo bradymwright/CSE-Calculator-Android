@@ -1,19 +1,250 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:fillViewport="true">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
 
-</android.support.constraint.ConstraintLayout>
+        <ImageView
+            android:id="@+id/headerTomatoImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:adjustViewBounds="true"
+            app:layout_constraintBottom_toBottomOf="@+id/headerLogoImageView"
+            app:layout_constraintEnd_toEndOf="@+id/headerLogoImageView"
+            app:layout_constraintTop_toTopOf="@+id/headerLogoImageView"
+            app:srcCompat="@drawable/header_tomato"/>
+
+        <ImageView
+            android:id="@+id/headerLogoImageView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:paddingTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/header_logo"/>
+
+        <android.support.constraint.Guideline
+            android:id="@+id/startGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="16dp"/>
+
+        <android.support.constraint.Guideline
+            android:id="@+id/endGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="16dp"/>
+
+        <RadioGroup
+            android:id="@+id/genderRadioGroup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/ageTextInputLayout"
+            app:layout_constraintEnd_toEndOf="@+id/endGuideline"
+            app:layout_constraintStart_toStartOf="@+id/startGuideline"
+            app:layout_constraintTop_toBottomOf="@+id/headerLogoImageView">
+
+            <RadioButton
+                android:id="@+id/maleRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/male_gender_radio_button_background"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Male"
+                android:textAllCaps="true"
+                android:textColor="@color/gender_radio_button_text"/>
+
+            <RadioButton
+                android:id="@+id/femaleRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/female_gender_radio_button_background"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Female"
+                android:textAllCaps="true"
+                android:textColor="@color/gender_radio_button_text"/>
+        </RadioGroup>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/ageTextInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Age"
+            app:layout_constraintBottom_toTopOf="@+id/heightSpinner"
+            app:layout_constraintEnd_toStartOf="@+id/ageImageView"
+            app:layout_constraintStart_toStartOf="@+id/startGuideline"
+            app:layout_constraintTop_toBottomOf="@+id/genderRadioGroup">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/ageEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/ageImageView"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/ageTextInputLayout"
+            app:layout_constraintEnd_toEndOf="@+id/endGuideline"
+            app:layout_constraintStart_toEndOf="@+id/ageTextInputLayout"
+            app:layout_constraintTop_toTopOf="@+id/ageTextInputLayout"
+            app:srcCompat="@drawable/ic_age"/>
+
+        <TextView
+            android:id="@+id/heightSpinnerLabelTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="Height"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/heightSpinner"
+            app:layout_constraintEnd_toStartOf="@+id/heightSpinner"
+            app:layout_constraintStart_toEndOf="@+id/startGuideline"
+            app:layout_constraintTop_toTopOf="@+id/heightSpinner"/>
+
+        <Spinner
+            android:id="@+id/heightSpinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/weightTextInputLayout"
+            app:layout_constraintEnd_toEndOf="@+id/heightImageView"
+            app:layout_constraintStart_toEndOf="@+id/heightSpinnerLabelTextView"
+            app:layout_constraintTop_toBottomOf="@+id/ageTextInputLayout"/>
+
+        <ImageView
+            android:id="@+id/heightImageView"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/heightSpinner"
+            app:layout_constraintEnd_toEndOf="@+id/endGuideline"
+            app:layout_constraintStart_toEndOf="@+id/heightSpinner"
+            app:layout_constraintTop_toTopOf="@+id/heightSpinner"
+            app:srcCompat="@drawable/ic_height"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/weightTextInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Weight (lbs)"
+            app:layout_constraintBottom_toTopOf="@+id/weeklyActivitySpinner"
+            app:layout_constraintEnd_toStartOf="@+id/weightImageView"
+            app:layout_constraintStart_toStartOf="@+id/startGuideline"
+            app:layout_constraintTop_toBottomOf="@+id/heightSpinner">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/weightEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/weightImageView"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/weightTextInputLayout"
+            app:layout_constraintEnd_toEndOf="@+id/endGuideline"
+            app:layout_constraintStart_toEndOf="@+id/weightTextInputLayout"
+            app:layout_constraintTop_toTopOf="@+id/weightTextInputLayout"
+            app:srcCompat="@drawable/ic_weight"/>
+
+        <TextView
+            android:id="@+id/weeklyActivitySpinnerLabelTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="Weekly activity"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/weeklyActivitySpinner"
+            app:layout_constraintEnd_toStartOf="@+id/weeklyActivitySpinner"
+            app:layout_constraintStart_toEndOf="@+id/startGuideline"
+            app:layout_constraintTop_toTopOf="@+id/weeklyActivitySpinner"/>
+
+        <Spinner
+            android:id="@+id/weeklyActivitySpinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/weightGoalSpinner"
+            app:layout_constraintEnd_toStartOf="@+id/weeklyActivityImageView"
+            app:layout_constraintStart_toEndOf="@+id/weeklyActivitySpinnerLabelTextView"
+            app:layout_constraintTop_toBottomOf="@+id/weightTextInputLayout"/>
+
+        <ImageView
+            android:id="@+id/weeklyActivityImageView"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/weeklyActivitySpinner"
+            app:layout_constraintEnd_toEndOf="@+id/endGuideline"
+            app:layout_constraintStart_toEndOf="@+id/weeklyActivitySpinner"
+            app:layout_constraintTop_toTopOf="@+id/weeklyActivitySpinner"
+            app:srcCompat="@drawable/ic_weekly_activity"/>
+
+        <TextView
+            android:id="@+id/weightGoalSpinnerLabelTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="Weight goal"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/weightGoalSpinner"
+            app:layout_constraintEnd_toStartOf="@+id/weightGoalSpinner"
+            app:layout_constraintStart_toEndOf="@+id/startGuideline"
+            app:layout_constraintTop_toTopOf="@+id/weightGoalSpinner"/>
+
+        <Spinner
+            android:id="@+id/weightGoalSpinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/submitTextView"
+            app:layout_constraintEnd_toStartOf="@+id/weightGoalImageView"
+            app:layout_constraintStart_toEndOf="@+id/weightGoalSpinnerLabelTextView"
+            app:layout_constraintTop_toBottomOf="@+id/weeklyActivitySpinner"/>
+
+        <ImageView
+            android:id="@+id/weightGoalImageView"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/weightGoalSpinner"
+            app:layout_constraintEnd_toEndOf="@+id/endGuideline"
+            app:layout_constraintStart_toEndOf="@+id/weightGoalSpinner"
+            app:layout_constraintTop_toTopOf="@+id/weightGoalSpinner"
+            app:srcCompat="@drawable/ic_weight_goal"/>
+
+        <TextView
+            android:id="@+id/submitTextView"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:background="@color/black"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="@drawable/ripple_white"
+            android:gravity="center"
+            android:text="Submit"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>
