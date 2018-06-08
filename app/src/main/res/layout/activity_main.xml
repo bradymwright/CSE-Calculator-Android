@@ -111,25 +111,13 @@
             app:layout_constraintTop_toTopOf="@+id/ageTextInputLayout"
             app:srcCompat="@drawable/ic_age"/>
 
-        <TextView
-            android:id="@+id/heightSpinnerLabelTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:text="Height"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/heightSpinner"
-            app:layout_constraintEnd_toStartOf="@+id/heightSpinner"
-            app:layout_constraintStart_toEndOf="@+id/startGuideline"
-            app:layout_constraintTop_toTopOf="@+id/heightSpinner"/>
-
         <Spinner
             android:id="@+id/heightSpinner"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@+id/weightTextInputLayout"
-            app:layout_constraintEnd_toEndOf="@+id/heightImageView"
-            app:layout_constraintStart_toEndOf="@+id/heightSpinnerLabelTextView"
+            app:layout_constraintEnd_toStartOf="@+id/heightImageView"
+            app:layout_constraintStart_toStartOf="@+id/startGuideline"
             app:layout_constraintTop_toBottomOf="@+id/ageTextInputLayout"/>
 
         <ImageView
@@ -168,25 +156,13 @@
             app:layout_constraintTop_toTopOf="@+id/weightTextInputLayout"
             app:srcCompat="@drawable/ic_weight"/>
 
-        <TextView
-            android:id="@+id/weeklyActivitySpinnerLabelTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:text="Weekly activity"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/weeklyActivitySpinner"
-            app:layout_constraintEnd_toStartOf="@+id/weeklyActivitySpinner"
-            app:layout_constraintStart_toEndOf="@+id/startGuideline"
-            app:layout_constraintTop_toTopOf="@+id/weeklyActivitySpinner"/>
-
         <Spinner
             android:id="@+id/weeklyActivitySpinner"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@+id/weightGoalSpinner"
             app:layout_constraintEnd_toStartOf="@+id/weeklyActivityImageView"
-            app:layout_constraintStart_toEndOf="@+id/weeklyActivitySpinnerLabelTextView"
+            app:layout_constraintStart_toStartOf="@+id/startGuideline"
             app:layout_constraintTop_toBottomOf="@+id/weightTextInputLayout"/>
 
         <ImageView
@@ -199,25 +175,13 @@
             app:layout_constraintTop_toTopOf="@+id/weeklyActivitySpinner"
             app:srcCompat="@drawable/ic_weekly_activity"/>
 
-        <TextView
-            android:id="@+id/weightGoalSpinnerLabelTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:text="Weight goal"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/weightGoalSpinner"
-            app:layout_constraintEnd_toStartOf="@+id/weightGoalSpinner"
-            app:layout_constraintStart_toEndOf="@+id/startGuideline"
-            app:layout_constraintTop_toTopOf="@+id/weightGoalSpinner"/>
-
         <Spinner
             android:id="@+id/weightGoalSpinner"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@+id/submitTextView"
             app:layout_constraintEnd_toStartOf="@+id/weightGoalImageView"
-            app:layout_constraintStart_toEndOf="@+id/weightGoalSpinnerLabelTextView"
+            app:layout_constraintStart_toStartOf="@+id/startGuideline"
             app:layout_constraintTop_toBottomOf="@+id/weeklyActivitySpinner"/>
 
         <ImageView

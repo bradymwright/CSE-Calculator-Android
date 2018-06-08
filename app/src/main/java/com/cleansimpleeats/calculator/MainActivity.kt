@@ -33,24 +33,31 @@ class MainActivity : AppCompatActivity(), MainView {
         }
     }
 
-    private fun createSubmitParams(): SubmitParams? {
-        val ageString = ageEditText.text.toString()
-        val weightLbsString = weightEditText.text.toString()
-        if (ageString.isEmpty() || weightLbsString.isEmpty()) return null
+    private val isInputValid: Boolean
+        get() {
+            val ageString = ageEditText.text.toString()
+            val weightLbsString = weightEditText.text.toString()
+            return (ageString.isEmpty()
+                    || weightLbsString.isEmpty()
+                    || heightSpinner.selectedItemPosition == 0
+                    || weeklyActivitySpinner.selectedItemPosition == 0
+                    || weightGoalSpinner.selectedItemPosition == 0)
+        }
 
-        return SubmitParams(
+    private fun createSubmitParams(): SubmitParams? =
+        if (isInputValid) null
+        else SubmitParams(
             gender = when (genderRadioGroup.checkedRadioButtonId) {
                 R.id.maleRadioButton -> Gender.MALE
                 R.id.femaleRadioButton -> Gender.FEMALE
                 else -> throw IllegalStateException("Unsupported gender RadioButton")
             },
-            age = ageString.toInt(),
-            weightLbs = weightLbsString.toInt(),
-            heightItemPosition = heightSpinner.selectedItemPosition,
-            weeklyActivityItemPosition = weeklyActivitySpinner.selectedItemPosition,
-            weightGoalItemPosition = weightGoalSpinner.selectedItemPosition
+            age = ageEditText.text.toString().toInt(),
+            weightLbs = weightEditText.text.toString().toInt(),
+            heightItemPosition = heightSpinner.selectedItemPosition - 1,
+            weeklyActivityItemPosition = weeklyActivitySpinner.selectedItemPosition - 1,
+            weightGoalItemPosition = weightGoalSpinner.selectedItemPosition - 1
         )
-    }
 
     override fun onStart() {
         super.onStart()
@@ -75,15 +82,15 @@ class MainActivity : AppCompatActivity(), MainView {
     }
 
     override fun showHeightItems(heightItems: List<ImperialHeight>) {
-        heightSpinner.setItemAdapter(heightItems)
+        heightSpinner.setItemAdapter(heightItems, "Height")
     }
 
     override fun showWeeklyActivityItems(weeklyActivityItems: List<WeeklyActivity>) {
-        weeklyActivitySpinner.setItemAdapter(weeklyActivityItems.map(WeeklyActivity::text))
+        weeklyActivitySpinner.setItemAdapter(weeklyActivityItems.map(WeeklyActivity::text), "Weekly activity")
     }
 
     override fun showWeightGoals(weightGoals: List<WeightGoal>) {
-        weightGoalSpinner.setItemAdapter(weightGoals.map(WeightGoal::text))
+        weightGoalSpinner.setItemAdapter(weightGoals.map(WeightGoal::text), "Weight goal")
     }
 }
 
