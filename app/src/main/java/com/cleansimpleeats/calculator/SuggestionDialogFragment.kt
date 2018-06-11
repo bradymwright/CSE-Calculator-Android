@@ -48,27 +48,30 @@ class SuggestionDialogFragment : DialogFragment() {
     private fun setupSuggestions() {
         val suggestions = arguments!!.getStringArray(ARG_SUGGESTIONS)
         suggestions.forEachIndexed { index, suggestion ->
-            val textView = AppCompatTextView(context).apply {
-                id = View.generateViewId()
-                text = suggestion
-                setTextSize(TypedValue.COMPLEX_UNIT_SP, 14f)
-                gravity = Gravity.CENTER_HORIZONTAL
-                setTextColor(ContextCompat.getColor(context, R.color.cse_black))
-            }
-            suggestionLinearLayout.addView(textView, suggestionLinearLayout.indexOfChild(changeTextView))
-
-            if (index != suggestions.size - 1) {
-                val separatorImageView = AppCompatImageView(context).apply {
-                    id = View.generateViewId()
-                    setImageResource(R.drawable.ic_suggestion_separator)
-                    val size = context.dpToPixels(24)
-                    layoutParams = LinearLayout.LayoutParams(size, size).apply {
-                        gravity = Gravity.CENTER_HORIZONTAL
-                        setMargins(context.dpToPixels(8))
-                    }
-                }
+            val textView = createSuggestionTextView(suggestion)
+            if (index != 0) {
+                val separatorImageView = createSeparatorImageView()
                 suggestionLinearLayout.addView(separatorImageView, suggestionLinearLayout.indexOfChild(changeTextView))
             }
+            suggestionLinearLayout.addView(textView, suggestionLinearLayout.indexOfChild(changeTextView))
+        }
+    }
+
+    private fun createSuggestionTextView(suggestion: String?) = AppCompatTextView(context).apply {
+        id = View.generateViewId()
+        text = suggestion
+        setTextSize(TypedValue.COMPLEX_UNIT_SP, 14f)
+        gravity = Gravity.CENTER_HORIZONTAL
+        setTextColor(ContextCompat.getColor(context, R.color.cse_black))
+    }
+
+    private fun createSeparatorImageView() = AppCompatImageView(context).apply {
+        id = View.generateViewId()
+        setImageResource(R.drawable.ic_suggestion_separator)
+        val size = context.dpToPixels(24)
+        layoutParams = LinearLayout.LayoutParams(size, size).apply {
+            gravity = Gravity.CENTER_HORIZONTAL
+            setMargins(context.dpToPixels(8))
         }
     }
 
