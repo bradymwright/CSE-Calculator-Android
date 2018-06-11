@@ -54,7 +54,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/ageTextInputLayout"
+            app:layout_constraintBottom_toTopOf="@+id/ageEditText"
             app:layout_constraintEnd_toEndOf="@+id/endGuideline"
             app:layout_constraintStart_toStartOf="@+id/startGuideline"
             app:layout_constraintTop_toBottomOf="@+id/headerLogoImageView">
@@ -86,64 +86,54 @@
                 android:textColor="@color/gender_radio_button_text"/>
         </RadioGroup>
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/ageTextInputLayout"
+        <EditText
+            android:id="@+id/ageEditText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
             android:hint="@string/age_input_hint"
-            android:paddingEnd="16dp"
-            android:paddingStart="3dp"
-            app:layout_constraintBottom_toTopOf="@+id/weightTextInputLayout"
+            android:layout_marginStart="8dp"
+            android:background="@color/transparent"
+            android:inputType="number"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/weightEditText"
             app:layout_constraintEnd_toStartOf="@+id/ageImageView"
             app:layout_constraintStart_toStartOf="@+id/startGuideline"
-            app:layout_constraintTop_toBottomOf="@+id/genderRadioGroup">
-
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/ageEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:textSize="16sp"/>
-        </android.support.design.widget.TextInputLayout>
+            app:layout_constraintTop_toBottomOf="@+id/genderRadioGroup"/>
 
         <ImageView
             android:id="@+id/ageImageView"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            app:layout_constraintBottom_toBottomOf="@+id/ageTextInputLayout"
+            app:layout_constraintBottom_toBottomOf="@+id/ageEditText"
             app:layout_constraintEnd_toEndOf="@+id/endGuideline"
-            app:layout_constraintStart_toEndOf="@+id/ageTextInputLayout"
-            app:layout_constraintTop_toTopOf="@+id/ageTextInputLayout"
+            app:layout_constraintStart_toEndOf="@+id/ageEditText"
+            app:layout_constraintTop_toTopOf="@+id/ageEditText"
             app:srcCompat="@drawable/ic_age"/>
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/weightTextInputLayout"
+        <EditText
+            android:id="@+id/weightEditText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
             android:hint="@string/weight_input_hint"
-            android:paddingEnd="16dp"
-            android:paddingStart="3dp"
+            android:layout_marginStart="8dp"
+            android:background="@color/transparent"
+            android:inputType="number"
+            android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/heightSpinner"
             app:layout_constraintEnd_toStartOf="@+id/weightImageView"
             app:layout_constraintStart_toStartOf="@+id/startGuideline"
-            app:layout_constraintTop_toBottomOf="@+id/ageTextInputLayout">
-
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/weightEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:textSize="16sp"/>
-        </android.support.design.widget.TextInputLayout>
+            app:layout_constraintTop_toBottomOf="@+id/ageEditText"/>
 
         <ImageView
             android:id="@+id/weightImageView"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            app:layout_constraintBottom_toBottomOf="@+id/weightTextInputLayout"
+            app:layout_constraintBottom_toBottomOf="@+id/weightEditText"
             app:layout_constraintEnd_toEndOf="@+id/endGuideline"
-            app:layout_constraintStart_toEndOf="@+id/weightTextInputLayout"
-            app:layout_constraintTop_toTopOf="@+id/weightTextInputLayout"
+            app:layout_constraintStart_toEndOf="@+id/weightEditText"
+            app:layout_constraintTop_toTopOf="@+id/weightEditText"
             app:srcCompat="@drawable/ic_weight"/>
 
         <Spinner
@@ -153,7 +143,7 @@
             app:layout_constraintBottom_toTopOf="@+id/weeklyActivitySpinner"
             app:layout_constraintEnd_toStartOf="@+id/heightImageView"
             app:layout_constraintStart_toStartOf="@+id/startGuideline"
-            app:layout_constraintTop_toBottomOf="@+id/weightTextInputLayout"/>
+            app:layout_constraintTop_toBottomOf="@+id/weightEditText"/>
 
         <ImageView
             android:id="@+id/heightImageView"
