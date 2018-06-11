@@ -1,5 +1,6 @@
 package com.cleansimpleeats.calculator
 
+import android.content.Context
 import android.graphics.Color
 import android.support.v4.content.ContextCompat
 import android.view.View
@@ -37,11 +38,12 @@ fun <T> Spinner.setItemAdapter(items: List<T>, hint: String) {
         override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
             setTextColor(getTextColor(position))
         }
-
     }
-
 }
 
 private fun Spinner.setTextColor(color: Int) {
     (this[0] as TextView).setTextColor(color)
 }
+
+
+fun Context.dpToPixels(dp: Int): Int = (dp * resources.displayMetrics.density + 0.5f).toInt()

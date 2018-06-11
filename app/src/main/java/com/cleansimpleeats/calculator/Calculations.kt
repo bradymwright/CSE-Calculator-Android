@@ -52,19 +52,16 @@ typealias DCT = DailyCalorieTarget
 fun calculateDct(tdee: TDEE, weightGoalFactor: Double): DCT =
     (tdee + (tdee * weightGoalFactor)).toInt()
 
-fun getDisplayServingSuggestions(dct: DCT): Array<String> {
-    require(dct >= 0)
-    return when (dct) {
-        in 0..1499 -> arrayOf("3 meals / 1 snack", "3 meals / 2 power balls")
-        in 1500..1749 -> arrayOf("3 meals / 2 snacks", "3 meals / 1 snack / 2 power balls")
-        in 1750..1999 -> arrayOf("3 meals / 3 snacks", "3 meals / 2 snacks / 2 power balls")
-        in 2000..2249 -> arrayOf("3 meals / 4 snacks", "3 meals / 3 snacks / 2 power balls", "4 meals / 2 snack / 1 power ball")
-        in 2250..2499 -> arrayOf("4 meals / 3 snacks / 1 power ball", "3 meals / 4 snacks / 2 power balls", "3 meals / 5 snacks")
-        in 2500..2749 -> arrayOf("4 meals / 4 snacks / 1 power ball", "5 meals / 3 snacks", "5 meals / 2 snacks / 2 power balls")
-        in 2750..2999 -> arrayOf("5 meals / 3 snacks / 1 power ball", "6 meals / 2 snacks / 2 power balls", "6 meals / 3 snacks")
-        in 3000..Int.MAX_VALUE -> arrayOf("5 meals / 5 snacks / 1 dessert", "6 meals / 4 snacks", "6 meals / 3 snacks / 2 desserts")
-        else -> throw IllegalArgumentException()
-    }
+fun getDisplayServingSuggestions(dct: DCT): Array<String> = when (dct) {
+    in 0..1499 -> arrayOf("3 meals / 1 snack", "3 meals / 2 power balls")
+    in 1500..1749 -> arrayOf("3 meals / 2 snacks", "3 meals / 1 snack / 2 power balls")
+    in 1750..1999 -> arrayOf("3 meals / 3 snacks", "3 meals / 2 snacks / 2 power balls")
+    in 2000..2249 -> arrayOf("3 meals / 4 snacks", "3 meals / 3 snacks / 2 power balls", "4 meals / 2 snack / 1 power ball")
+    in 2250..2499 -> arrayOf("4 meals / 3 snacks / 1 power ball", "3 meals / 4 snacks / 2 power balls", "3 meals / 5 snacks")
+    in 2500..2749 -> arrayOf("4 meals / 4 snacks / 1 power ball", "5 meals / 3 snacks", "5 meals / 2 snacks / 2 power balls")
+    in 2750..2999 -> arrayOf("5 meals / 3 snacks / 1 power ball", "6 meals / 2 snacks / 2 power balls", "6 meals / 3 snacks")
+    in 3000..Int.MAX_VALUE -> arrayOf("5 meals / 5 snacks / 1 dessert", "6 meals / 4 snacks", "6 meals / 3 snacks / 2 desserts")
+    else -> emptyArray()
 }
 
 const val CENTIMETERS_IN_INCH = 2.54

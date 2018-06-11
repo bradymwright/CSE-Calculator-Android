@@ -4,10 +4,13 @@ import android.os.Bundle
 import android.support.v4.app.DialogFragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.content.ContextCompat
+import android.support.v7.widget.AppCompatImageView
+import android.support.v7.widget.AppCompatTextView
 import android.util.TypedValue
 import android.view.*
-import android.widget.TextView
+import android.widget.LinearLayout
 import androidx.core.os.bundleOf
+import androidx.core.view.setMargins
 import kotlinx.android.synthetic.main.dialog_suggestion.*
 
 private const val TAG = BuildConfig.APPLICATION_ID + ".SuggestionDialogFragment"
@@ -45,16 +48,27 @@ class SuggestionDialogFragment : DialogFragment() {
     private fun setupSuggestions() {
         val suggestions = arguments!!.getStringArray(ARG_SUGGESTIONS)
         suggestions.forEachIndexed { index, suggestion ->
-            val textView = TextView(context).apply {
+            val textView = AppCompatTextView(context).apply {
+                id = View.generateViewId()
                 text = suggestion
                 setTextSize(TypedValue.COMPLEX_UNIT_SP, 14f)
                 gravity = Gravity.CENTER_HORIZONTAL
                 setTextColor(ContextCompat.getColor(context, R.color.cse_black))
-                if (index != 0) {
-                    setCompoundDrawablesWithIntrinsicBounds(null, context.getDrawable(R.drawable.ic_suggestion_separator), null, null)
-                }
             }
             suggestionLinearLayout.addView(textView, suggestionLinearLayout.indexOfChild(changeTextView))
+
+            if (index != suggestions.size - 1) {
+                val separatorImageView = AppCompatImageView(context).apply {
+                    id = View.generateViewId()
+                    setImageResource(R.drawable.ic_suggestion_separator)
+                    val size = context.dpToPixels(24)
+                    layoutParams = LinearLayout.LayoutParams(size, size).apply {
+                        gravity = Gravity.CENTER_HORIZONTAL
+                        setMargins(context.dpToPixels(8))
+                    }
+                }
+                suggestionLinearLayout.addView(separatorImageView, suggestionLinearLayout.indexOfChild(changeTextView))
+            }
         }
     }
 
