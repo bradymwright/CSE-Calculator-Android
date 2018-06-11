@@ -1,6 +1,7 @@
 package com.cleansimpleeats.calculator
 
 import android.graphics.Color
+import android.support.v4.content.ContextCompat
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
@@ -20,7 +21,7 @@ fun <T> Spinner.setItemAdapter(items: List<T>, hint: String) {
 
         override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup?): View =
             (super.getDropDownView(position, convertView, parent) as TextView).apply {
-                setTextColor(if (position == 0) Color.GRAY else Color.BLACK)
+                setTextColor(if (position == 0) Color.GRAY else ContextCompat.getColor(context, R.color.cse_black))
             }
     }
     onItemSelectedListener = object : AdapterView.OnItemSelectedListener {

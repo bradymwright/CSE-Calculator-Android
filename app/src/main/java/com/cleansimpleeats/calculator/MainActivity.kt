@@ -28,36 +28,34 @@ class MainActivity : AppCompatActivity(), MainView {
     private fun setupSubmitButton() {
         submitTextView.setOnClickListener {
             createSubmitParams()?.let(presenter::onSubmit) ?: run {
-                toast("Please enter the data first")
+                toast(R.string.data_not_entered_message)
             }
         }
     }
 
     private val isInputValid: Boolean
-        get() {
-            val ageString = ageEditText.text.toString()
-            val weightLbsString = weightEditText.text.toString()
-            return (ageString.isEmpty()
-                    || weightLbsString.isEmpty()
-                    || heightSpinner.selectedItemPosition == 0
-                    || weeklyActivitySpinner.selectedItemPosition == 0
-                    || weightGoalSpinner.selectedItemPosition == 0)
-        }
+        get() = genderRadioGroup.checkedRadioButtonId != -1
+                && ageEditText.text.toString().isNotBlank()
+                && weightEditText.text.toString().isNotBlank()
+                && heightSpinner.selectedItemPosition != 0
+                && weeklyActivitySpinner.selectedItemPosition != 0
+                && weightGoalSpinner.selectedItemPosition != 0
 
     private fun createSubmitParams(): SubmitParams? =
-        if (isInputValid) null
-        else SubmitParams(
-            gender = when (genderRadioGroup.checkedRadioButtonId) {
-                R.id.maleRadioButton -> Gender.MALE
-                R.id.femaleRadioButton -> Gender.FEMALE
-                else -> throw IllegalStateException("Unsupported gender RadioButton")
-            },
-            age = ageEditText.text.toString().toInt(),
-            weightLbs = weightEditText.text.toString().toInt(),
-            heightItemPosition = heightSpinner.selectedItemPosition - 1,
-            weeklyActivityItemPosition = weeklyActivitySpinner.selectedItemPosition - 1,
-            weightGoalItemPosition = weightGoalSpinner.selectedItemPosition - 1
-        )
+        if (isInputValid) {
+            SubmitParams(
+                gender = when (genderRadioGroup.checkedRadioButtonId) {
+                    R.id.maleRadioButton -> Gender.MALE
+                    R.id.femaleRadioButton -> Gender.FEMALE
+                    else -> throw IllegalStateException("Unsupported gender RadioButton")
+                },
+                age = ageEditText.text.toString().toInt(),
+                weightLbs = weightEditText.text.toString().toInt(),
+                heightItemPosition = heightSpinner.selectedItemPosition - 1,
+                weeklyActivityItemPosition = weeklyActivitySpinner.selectedItemPosition - 1,
+                weightGoalItemPosition = weightGoalSpinner.selectedItemPosition - 1
+            )
+        } else null
 
     override fun onStart() {
         super.onStart()
@@ -82,15 +80,15 @@ class MainActivity : AppCompatActivity(), MainView {
     }
 
     override fun showHeightItems(heightItems: List<ImperialHeight>) {
-        heightSpinner.setItemAdapter(heightItems, "Height")
+        heightSpinner.setItemAdapter(heightItems, getString(R.string.height_spinner_hint))
     }
 
     override fun showWeeklyActivityItems(weeklyActivityItems: List<WeeklyActivity>) {
-        weeklyActivitySpinner.setItemAdapter(weeklyActivityItems.map(WeeklyActivity::text), "Weekly activity")
+        weeklyActivitySpinner.setItemAdapter(weeklyActivityItems.map(WeeklyActivity::text), getString(R.string.weekly_exercise_spinner_hint))
     }
 
     override fun showWeightGoals(weightGoals: List<WeightGoal>) {
-        weightGoalSpinner.setItemAdapter(weightGoals.map(WeightGoal::text), "Weight goal")
+        weightGoalSpinner.setItemAdapter(weightGoals.map(WeightGoal::text), getString(R.string.weight_goal_spinner_hint))
     }
 }
 

@@ -11,7 +11,6 @@ class MainPresenter {
 
     private fun showInitialViewState() {
         view?.run {
-            selectGender(Gender.MALE)
             showHeightItems(heights)
             showWeeklyActivityItems(weeklyActivities)
             showWeightGoals(weightGoals)
@@ -37,7 +36,6 @@ class MainPresenter {
             tdee = tdee,
             weightGoalFactor = weightGoals[submitParams.weightGoalItemPosition].factor
         )
-        println("BMR: $bmr, TDEE: $tdee, DCT: $dct")
         view?.showSuggestionDialog(
             calories = dct,
             suggestions = getDisplayServingSuggestions(dct)

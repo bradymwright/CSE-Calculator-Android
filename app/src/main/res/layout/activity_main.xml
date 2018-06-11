@@ -5,13 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:focusable="true"
-    android:focusableInTouchMode="true">
+    android:fillViewport="true">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         tools:context=".MainActivity">
 
         <ImageView
@@ -68,7 +68,7 @@
                 android:button="@null"
                 android:gravity="center"
                 android:padding="8dp"
-                android:text="Male"
+                android:text="@string/male_radio_button_text"
                 android:textAllCaps="true"
                 android:textColor="@color/gender_radio_button_text"/>
 
@@ -81,7 +81,7 @@
                 android:button="@null"
                 android:gravity="center"
                 android:padding="8dp"
-                android:text="Female"
+                android:text="@string/female_radio_button_text"
                 android:textAllCaps="true"
                 android:textColor="@color/gender_radio_button_text"/>
         </RadioGroup>
@@ -90,7 +90,8 @@
             android:id="@+id/ageTextInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Age"
+            android:hint="@string/age_input_hint"
+            android:paddingEnd="16dp"
             android:paddingStart="3dp"
             app:layout_constraintBottom_toTopOf="@+id/weightTextInputLayout"
             app:layout_constraintEnd_toStartOf="@+id/ageImageView"
@@ -119,7 +120,8 @@
             android:id="@+id/weightTextInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Weight (lbs)"
+            android:hint="@string/weight_input_hint"
+            android:paddingEnd="16dp"
             android:paddingStart="3dp"
             app:layout_constraintBottom_toTopOf="@+id/heightSpinner"
             app:layout_constraintEnd_toStartOf="@+id/weightImageView"
@@ -210,7 +212,7 @@
             android:focusable="true"
             android:foreground="@drawable/ripple_white"
             android:gravity="center"
-            android:text="Submit"
+            android:text="@string/submit_button_text"
             android:textAllCaps="true"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
