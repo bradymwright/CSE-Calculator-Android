@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity(), MainView {
     private lateinit var presenter: MainPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initPresenter()

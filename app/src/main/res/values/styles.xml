@@ -9,6 +9,10 @@
         <item name="android:navigationBarColor">@color/cse_black</item>
     </style>
 
+    <style name="AppTheme.Splash">
+        <item name="android:windowBackground">@drawable/splash</item>
+    </style>
+
     <style name="GenderRadioButton" parent="Widget.AppCompat.CompoundButton.RadioButton">
         <item name="android:button">@null</item>
     </style>
