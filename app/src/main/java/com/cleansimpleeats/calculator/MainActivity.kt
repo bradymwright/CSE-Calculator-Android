@@ -1,5 +1,6 @@
 package com.cleansimpleeats.calculator
 
+import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import androidx.core.widget.toast
@@ -21,8 +22,18 @@ class MainActivity : AppCompatActivity(), MainView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        presenter = MainPresenter()
+        initPresenter()
+        setupEditTexts()
         setupSubmitButton()
+    }
+
+    private fun initPresenter() {
+        presenter = MainPresenter()
+    }
+
+    private fun setupEditTexts() {
+        ageEditText.setHintTextColor(Color.GRAY)
+        weightEditText.setHintTextColor(Color.GRAY)
     }
 
     private fun setupSubmitButton() {
