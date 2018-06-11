@@ -49,7 +49,7 @@ class SuggestionDialogFragment : DialogFragment() {
                 text = suggestion
                 setTextSize(TypedValue.COMPLEX_UNIT_SP, 14f)
                 gravity = Gravity.CENTER_HORIZONTAL
-                setTextColor(ContextCompat.getColor(context, R.color.black))
+                setTextColor(ContextCompat.getColor(context, R.color.cse_black))
                 if (index != 0) {
                     setCompoundDrawablesWithIntrinsicBounds(null, context.getDrawable(R.drawable.ic_suggestion_separator), null, null)
                 }
