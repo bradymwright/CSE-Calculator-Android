@@ -12,6 +12,8 @@ import android.widget.LinearLayout
 import androidx.core.os.bundleOf
 import androidx.core.view.setMargins
 import kotlinx.android.synthetic.main.dialog_suggestion.*
+import java.text.NumberFormat
+import java.util.*
 
 private const val TAG = BuildConfig.APPLICATION_ID + ".SuggestionDialogFragment"
 private const val ARG_CALORIES = "calories"
@@ -77,7 +79,8 @@ class SuggestionDialogFragment : DialogFragment() {
 
     private fun setupCaloriesText() {
         val calories = arguments!!.getInt(ARG_CALORIES)
-        caloriesTextView.text = calories.toString()
+        val formattedCalories = NumberFormat.getNumberInstance(Locale.US).format(calories).replace(',', ' ')
+        caloriesTextView.text = formattedCalories
     }
 
     override fun onStart() {
