@@ -1,7 +1,5 @@
 package com.cleansimpleeats.calculator
 
-import kotlin.math.roundToInt
-
 
 enum class Gender { MALE, FEMALE }
 
@@ -44,7 +42,7 @@ val weightGoals = listOf(
     WeightGoal(-0.15, "Weight Loss (15% below)"),
     WeightGoal(-0.1, "Weight Loss (10% below)"),
     WeightGoal(0.0, "Maintain Current Weight"),
-    WeightGoal(0.1, "Weight Gain (10% below)"),
+    WeightGoal(0.1, "Weight Gain (10% above)"),
     WeightGoal(0.15, "Weight Gain (15%+ above)")
 )
 
@@ -52,7 +50,7 @@ typealias DailyCalorieTarget = Int
 typealias DCT = DailyCalorieTarget
 
 fun calculateDct(tdee: TDEE, weightGoalFactor: Double): DCT =
-    (tdee + (tdee * weightGoalFactor)).roundToInt()
+    (tdee + (tdee * weightGoalFactor)).toInt()
 
 fun getDisplayServingSuggestions(dct: DCT): Array<String> {
     require(dct >= 0)
@@ -87,7 +85,7 @@ class ImperialHeight(val feet: Int, val inches: Int) {
         )
     }
 
-    fun toCentimeters(): Int = ((feet * INCHES_IN_FOOT + inches) * CENTIMETERS_IN_INCH).roundToInt()
+    fun toCentimeters(): Int = ((feet * INCHES_IN_FOOT + inches) * CENTIMETERS_IN_INCH).toInt()
 
     override fun toString() = """$feet' $inches""""
 }
