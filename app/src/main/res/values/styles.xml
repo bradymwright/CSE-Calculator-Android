@@ -5,6 +5,8 @@
         <item name="colorPrimaryDark">@color/primary_dark</item>
         <item name="colorAccent">@color/accent</item>
         <item name="android:textColor">@color/cse_black</item>
+        <item name="android:statusBarColor">@color/cse_black</item>
+        <item name="android:navigationBarColor">@color/cse_black</item>
     </style>
 
     <style name="GenderRadioButton" parent="Widget.AppCompat.CompoundButton.RadioButton">
