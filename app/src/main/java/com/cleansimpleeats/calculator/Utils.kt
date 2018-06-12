@@ -1,15 +1,18 @@
 package com.cleansimpleeats.calculator
 
+import android.app.Activity
 import android.content.Context
 import android.graphics.Color
 import android.support.v4.content.ContextCompat
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.core.view.get
+
 
 fun <T> Spinner.setItemAdapter(items: List<T>, hint: String) {
     fun getTextColor(position: Int) =
@@ -45,5 +48,9 @@ private fun Spinner.setTextColor(color: Int) {
     (this[0] as TextView).setTextColor(color)
 }
 
+fun View.hideKeyboard() {
+    val inputMethodManager = context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+    inputMethodManager.hideSoftInputFromWindow(windowToken, 0)
+}
 
 fun Context.dpToPixels(dp: Int): Int = (dp * resources.displayMetrics.density + 0.5f).toInt()

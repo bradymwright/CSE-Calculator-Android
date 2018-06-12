@@ -33,8 +33,12 @@ class MainActivity : AppCompatActivity(), MainView {
     }
 
     private fun setupEditTexts() {
-        ageEditText.setHintTextColor(Color.GRAY)
-        weightEditText.setHintTextColor(Color.GRAY)
+        arrayOf(ageEditText, weightEditText).forEach {
+            it.setHintTextColor(Color.GRAY)
+            it.setOnFocusChangeListener { view, hasFocus ->
+                if (!hasFocus) view.hideKeyboard()
+            }
+        }
     }
 
     private fun setupSubmitButton() {
