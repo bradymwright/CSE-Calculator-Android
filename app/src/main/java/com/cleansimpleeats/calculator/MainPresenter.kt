@@ -24,7 +24,7 @@ class MainPresenter {
     fun onSubmit(submitParams: SubmitParams) {
         val bmr = calculateBmr(
             gender = submitParams.gender,
-            weightLbs = submitParams.weightLbs,
+            weightLbs = submitParams.weightLbs.toFloat(),
             heightCm = heights[submitParams.heightItemPosition].toCentimeters(),
             age = submitParams.age
         )

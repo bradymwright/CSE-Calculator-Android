@@ -22,7 +22,7 @@ private const val ARG_SUGGESTIONS = "suggestions"
 class SuggestionDialogFragment : DialogFragment() {
 
     companion object {
-        fun show(fragmentManager: FragmentManager, calories: Int, suggestions: Array<String>) {
+        fun show(fragmentManager: FragmentManager, calories: Float, suggestions: Array<String>) {
             SuggestionDialogFragment().run {
                 arguments = bundleOf(
                     ARG_CALORIES to calories,
@@ -78,7 +78,7 @@ class SuggestionDialogFragment : DialogFragment() {
     }
 
     private fun setupCaloriesText() {
-        val calories = arguments!!.getInt(ARG_CALORIES)
+        val calories = (arguments!!.getFloat(ARG_CALORIES)).toInt()
         val formattedCalories = NumberFormat.getNumberInstance(Locale.US).format(calories)
         caloriesTextView.text = formattedCalories
     }

@@ -12,7 +12,7 @@ interface MainView {
     fun showHeightItems(heightItems: List<ImperialHeight>)
     fun showWeeklyActivityItems(weeklyActivityItems: List<WeeklyActivity>)
     fun showWeightGoals(weightGoals: List<WeightGoal>)
-    fun showSuggestionDialog(calories: Int, suggestions: Array<String>)
+    fun showSuggestionDialog(calories: Float, suggestions: Array<String>)
 }
 
 class MainActivity : AppCompatActivity(), MainView {
@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity(), MainView {
         super.onStop()
     }
 
-    override fun showSuggestionDialog(calories: Int, suggestions: Array<String>) {
+    override fun showSuggestionDialog(calories: Float, suggestions: Array<String>) {
         SuggestionDialogFragment.show(supportFragmentManager, calories, suggestions)
     }
 

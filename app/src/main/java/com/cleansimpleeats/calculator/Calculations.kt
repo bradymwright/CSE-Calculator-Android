@@ -6,15 +6,15 @@ enum class Gender { MALE, FEMALE }
 typealias BasalMetabolicRate = Float
 typealias BMR = BasalMetabolicRate
 
-fun calculateBmr(gender: Gender, weightLbs: Int, heightCm: Int, age: Int): BMR = when (gender) {
+fun calculateBmr(gender: Gender, weightLbs: Float, heightCm: Float, age: Int): BMR = when (gender) {
     Gender.MALE -> calculateBmrMale(weightLbs, heightCm, age)
     Gender.FEMALE -> calculateBmrFemale(weightLbs, heightCm, age)
 }
 
-private fun calculateBmrMale(weightLbs: Int, heightCm: Int, age: Int): BMR =
+private fun calculateBmrMale(weightLbs: Float, heightCm: Float, age: Int): BMR =
     66 + (6.23f * weightLbs) + (5 * heightCm) - (6.8f * age)
 
-private fun calculateBmrFemale(weightLbs: Int, heightCm: Int, age: Int): BMR =
+private fun calculateBmrFemale(weightLbs: Float, heightCm: Float, age: Int): BMR =
     655 + (4.35f * weightLbs) + (1.8f * heightCm) - (4.7f * age)
 
 data class WeeklyActivity(val factor: Float, val text: String)
@@ -46,11 +46,11 @@ val weightGoals = listOf(
     WeightGoal(0.15f, "Weight Gain (15%+ surplus)")
 )
 
-typealias DailyCalorieTarget = Int
+typealias DailyCalorieTarget = Float
 typealias DCT = DailyCalorieTarget
 
 fun calculateDct(tdee: TDEE, weightGoalFactor: Float): DCT =
-    (tdee + (tdee * weightGoalFactor)).toInt()
+    tdee + (tdee * weightGoalFactor)
 
 fun getDisplayServingSuggestions(dct: DCT): Array<String> = when (dct) {
     in 0..1499 -> arrayOf("3 meals / 1 snack", "3 meals / 2 power balls")
@@ -82,7 +82,7 @@ class ImperialHeight(val feet: Int, val inches: Int) {
         )
     }
 
-    fun toCentimeters(): Int = ((feet * INCHES_IN_FOOT + inches) * CENTIMETERS_IN_INCH).toInt()
+    fun toCentimeters(): Float = (feet * INCHES_IN_FOOT + inches) * CENTIMETERS_IN_INCH
 
     override fun toString() = """$feet' $inches""""
 }
