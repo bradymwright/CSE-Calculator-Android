@@ -3,7 +3,7 @@ package com.cleansimpleeats.calculator
 
 enum class Gender { MALE, FEMALE }
 
-typealias BasalMetabolicRate = Double
+typealias BasalMetabolicRate = Float
 typealias BMR = BasalMetabolicRate
 
 fun calculateBmr(gender: Gender, weightLbs: Int, heightCm: Int, age: Int): BMR = when (gender) {
@@ -12,44 +12,44 @@ fun calculateBmr(gender: Gender, weightLbs: Int, heightCm: Int, age: Int): BMR =
 }
 
 private fun calculateBmrMale(weightLbs: Int, heightCm: Int, age: Int): BMR =
-    66 + (6.23 * weightLbs) + (5 * heightCm) - (6.8 * age)
+    66 + (6.23f * weightLbs) + (5 * heightCm) - (6.8f * age)
 
 private fun calculateBmrFemale(weightLbs: Int, heightCm: Int, age: Int): BMR =
-    655 + (4.35 * weightLbs) + (1.8 * heightCm) - (4.7 * age)
+    655 + (4.35f * weightLbs) + (1.8f * heightCm) - (4.7f * age)
 
-data class WeeklyActivity(val factor: Double, val text: String)
+data class WeeklyActivity(val factor: Float, val text: String)
 
 val weeklyActivities = listOf(
-    WeeklyActivity(1.2, "0 Days (I Don't Exercise)"),
-    WeeklyActivity(1.325, "1-2 Days/Week"),
-    WeeklyActivity(1.45, "3-4 Days/Week"),
-    WeeklyActivity(1.575, "5-6 Days/Week"),
-    WeeklyActivity(1.7, "7 Days/Week")
+    WeeklyActivity(1.2f, "0 Days (I Don't Exercise)"),
+    WeeklyActivity(1.325f, "1-2 Days/Week"),
+    WeeklyActivity(1.45f, "3-4 Days/Week"),
+    WeeklyActivity(1.575f, "5-6 Days/Week"),
+    WeeklyActivity(1.7f, "7 Days/Week")
 )
 
-typealias TotalDailyEnergyExpenditure = Double
+typealias TotalDailyEnergyExpenditure = Float
 typealias TDEE = TotalDailyEnergyExpenditure
 
-fun calculateTdee(bmr: BMR, weeklyActivityFactor: Double): TDEE =
+fun calculateTdee(bmr: BMR, weeklyActivityFactor: Float): TDEE =
     bmr * weeklyActivityFactor
 
-data class WeightGoal(val factor: Double, val text: String)
+data class WeightGoal(val factor: Float, val text: String)
 
 val weightGoals = listOf(
-    WeightGoal(-0.30, "Weight Loss (30% deficit)"),
-    WeightGoal(-0.25, "Weight Loss (25% deficit)"),
-    WeightGoal(-0.20, "Weight Loss (20% deficit)"),
-    WeightGoal(-0.15, "Weight Loss (15% deficit)"),
-    WeightGoal(-0.1, "Weight Loss (10% deficit)"),
-    WeightGoal(0.0, "Maintain Current Weight"),
-    WeightGoal(0.1, "Weight Gain (10% surplus)"),
-    WeightGoal(0.15, "Weight Gain (15%+ surplus)")
+    WeightGoal(-0.3f, "Weight Loss (30% deficit)"),
+    WeightGoal(-0.25f, "Weight Loss (25% deficit)"),
+    WeightGoal(-0.2f, "Weight Loss (20% deficit)"),
+    WeightGoal(-0.15f, "Weight Loss (15% deficit)"),
+    WeightGoal(-0.1f, "Weight Loss (10% deficit)"),
+    WeightGoal(0f, "Maintain Current Weight"),
+    WeightGoal(0.1f, "Weight Gain (10% surplus)"),
+    WeightGoal(0.15f, "Weight Gain (15%+ surplus)")
 )
 
 typealias DailyCalorieTarget = Int
 typealias DCT = DailyCalorieTarget
 
-fun calculateDct(tdee: TDEE, weightGoalFactor: Double): DCT =
+fun calculateDct(tdee: TDEE, weightGoalFactor: Float): DCT =
     (tdee + (tdee * weightGoalFactor)).toInt()
 
 fun getDisplayServingSuggestions(dct: DCT): Array<String> = when (dct) {
@@ -64,7 +64,7 @@ fun getDisplayServingSuggestions(dct: DCT): Array<String> = when (dct) {
     else -> emptyArray()
 }
 
-const val CENTIMETERS_IN_INCH = 2.54
+const val CENTIMETERS_IN_INCH = 2.54f
 const val MIN_HEIGHT_FEET = 4
 const val MAX_HEIGHT_FEET = 7
 const val INCHES_IN_FOOT = 12
