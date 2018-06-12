@@ -59,7 +59,7 @@ fun getDisplayServingSuggestions(dct: DCT): Array<String> = when (dct) {
     in 2000..2249 -> arrayOf("3 meals / 4 snacks", "3 meals / 3 snacks / 2 power balls", "4 meals / 2 snack / 1 power ball")
     in 2250..2499 -> arrayOf("4 meals / 3 snacks / 1 power ball", "3 meals / 4 snacks / 2 power balls", "3 meals / 5 snacks")
     in 2500..2749 -> arrayOf("4 meals / 4 snacks / 1 power ball", "5 meals / 3 snacks", "5 meals / 2 snacks / 2 power balls")
-    in 2750..2999 -> arrayOf("5 meals / 3 snacks / 1 power ball", "6 meal   s / 2 snacks / 2 power balls", "6 meals / 3 snacks")
+    in 2750..2999 -> arrayOf("5 meals / 3 snacks / 1 power ball", "6 meals / 2 snacks / 2 power balls", "6 meals / 3 snacks")
     in 3000..Int.MAX_VALUE -> arrayOf("5 meals / 5 snacks / 1 dessert", "6 meals / 4 snacks", "6 meals / 3 snacks / 2 desserts")
     else -> emptyArray()
 }
