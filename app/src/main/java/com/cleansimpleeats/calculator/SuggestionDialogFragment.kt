@@ -79,7 +79,7 @@ class SuggestionDialogFragment : DialogFragment() {
 
     private fun setupCaloriesText() {
         val calories = arguments!!.getInt(ARG_CALORIES)
-        val formattedCalories = NumberFormat.getNumberInstance(Locale.US).format(calories).replace(',', ' ')
+        val formattedCalories = NumberFormat.getNumberInstance(Locale.US).format(calories)
         caloriesTextView.text = formattedCalories
     }
 
