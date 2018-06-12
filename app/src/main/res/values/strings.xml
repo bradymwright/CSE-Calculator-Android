@@ -2,11 +2,11 @@
     <string name="app_name">CSE</string>
     <string name="male_radio_button_text">Male</string>
     <string name="female_radio_button_text">Female</string>
-    <string name="age_input_hint">Age</string>
-    <string name="weight_input_hint">Weight</string>
+    <string name="age_input_hint">How Old Are You?</string>
+    <string name="weight_input_hint">How Much Do You Weight?</string>
+    <string name="height_spinner_hint">How Tall Are You?</string>
     <string name="submit_button_text">Submit</string>
     <string name="data_not_entered_message">Please enter all information first</string>
-    <string name="height_spinner_hint">Height</string>
-    <string name="weekly_exercise_spinner_hint">Weekly Exercise</string>
-    <string name="weight_goal_spinner_hint">Weight Goal</string>
+    <string name="weekly_exercise_spinner_hint">How Many Days/Week Do You Exercise?</string>
+    <string name="weight_goal_spinner_hint">What Is Your Goal?</string>
 </resources>

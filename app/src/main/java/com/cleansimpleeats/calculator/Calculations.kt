@@ -20,11 +20,11 @@ private fun calculateBmrFemale(weightLbs: Int, heightCm: Int, age: Int): BMR =
 data class WeeklyActivity(val factor: Double, val text: String)
 
 val weeklyActivities = listOf(
-    WeeklyActivity(1.2, "0 Days"),
-    WeeklyActivity(1.325, "1-2 days/week"),
-    WeeklyActivity(1.45, "3-4 days/week"),
-    WeeklyActivity(1.575, "5-6 days/week"),
-    WeeklyActivity(1.7, "7 days/week")
+    WeeklyActivity(1.2, "0 Days (I Don't Exercise)"),
+    WeeklyActivity(1.325, "1-2 Days/Week"),
+    WeeklyActivity(1.45, "3-4 Days/Week"),
+    WeeklyActivity(1.575, "5-6 Days/Week"),
+    WeeklyActivity(1.7, "7 Days/Week")
 )
 
 typealias TotalDailyEnergyExpenditure = Double
@@ -36,14 +36,14 @@ fun calculateTdee(bmr: BMR, weeklyActivityFactor: Double): TDEE =
 data class WeightGoal(val factor: Double, val text: String)
 
 val weightGoals = listOf(
-    WeightGoal(-0.30, "Weight Loss (30% below)"),
-    WeightGoal(-0.25, "Weight Loss (25% below)"),
-    WeightGoal(-0.20, "Weight Loss (20% below)"),
-    WeightGoal(-0.15, "Weight Loss (15% below)"),
-    WeightGoal(-0.1, "Weight Loss (10% below)"),
+    WeightGoal(-0.30, "Weight Loss (30% deficit)"),
+    WeightGoal(-0.25, "Weight Loss (25% deficit)"),
+    WeightGoal(-0.20, "Weight Loss (20% deficit)"),
+    WeightGoal(-0.15, "Weight Loss (15% deficit)"),
+    WeightGoal(-0.1, "Weight Loss (10% deficit)"),
     WeightGoal(0.0, "Maintain Current Weight"),
-    WeightGoal(0.1, "Weight Gain (10% above)"),
-    WeightGoal(0.15, "Weight Gain (15%+ above)")
+    WeightGoal(0.1, "Weight Gain (10% surplus)"),
+    WeightGoal(0.15, "Weight Gain (15%+ surplus)")
 )
 
 typealias DailyCalorieTarget = Int
