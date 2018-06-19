@@ -3,6 +3,10 @@ package com.cleansimpleeats.calculator
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.View
+import android.view.ViewGroup
+import android.widget.EditText
+import androidx.core.view.children
 import androidx.core.widget.toast
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -32,13 +36,19 @@ class MainActivity : AppCompatActivity(), MainView {
         presenter = MainPresenter()
     }
 
-    private fun setupEditTexts() {
-        arrayOf(ageEditText, weightEditText).forEach {
-            it.setHintTextColor(Color.GRAY)
-            it.setOnFocusChangeListener { view, hasFocus ->
-                if (!hasFocus) view.hideKeyboard()
-            }
+    private fun View.hideKeyboardOnFocusExcludingEditTexts() {
+        if (this !is EditText) {
+            setOnFocusChangeListener { _, hasFocus -> if (hasFocus) hideSoftKeyboard() }
         }
+        if (this is ViewGroup) {
+            children.forEach { it.hideKeyboardOnFocusExcludingEditTexts() }
+        }
+    }
+
+    private fun setupEditTexts() {
+        mainConstraintLayout.hideKeyboardOnFocusExcludingEditTexts()
+        ageEditText.setHintTextColor(Color.GRAY)
+        weightEditText.setHintTextColor(Color.GRAY)
     }
 
     private fun setupSubmitButton() {

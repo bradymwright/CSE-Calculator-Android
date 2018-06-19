@@ -48,9 +48,13 @@ private fun Spinner.setTextColor(color: Int) {
     (this[0] as TextView).setTextColor(color)
 }
 
-fun View.hideKeyboard() {
+fun View.hideSoftKeyboard() {
     val inputMethodManager = context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
     inputMethodManager.hideSoftInputFromWindow(windowToken, 0)
+}
+
+fun Activity.hideSoftKeyboard() {
+    currentFocus?.hideSoftKeyboard()
 }
 
 fun Context.dpToPixels(dp: Int): Int = (dp * resources.displayMetrics.density + 0.5f).toInt()
